@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong File:
+  = @history.file
+
+
+
+canvas.canvas[width="800" height="600"]
+
+
+br
+div.mindmap[data-max-folder-nest="#{@history.max_nest}" data-count-by-layer="#{@history.count_by_layer}"]
+  - @history.folders.each do |f|
+    div.folder[data-id="#{f.id}" data-title="#{f.title}" data-isroot="#{f.is_root?}" data-parent-id="#{f.parent_id}" data-child-ids="#{f.child_ids.to_s}" data-nests="#{f.layer}"]
+      p = f.title
+      - f.bookmarks.each do |b|
+        div.bookmark[data-id="#{b.id}" data-folder-id="#{b.folder_id}" data-title="#{b.title}" data-href="#{b.href}" data-add-date="#{b.add_date}" data-nests="#{b.layer}"]
+          p = b.title
+
+
+= link_to 'Edit', edit_history_path(@history)
+'|
+= link_to 'Back', histories_path

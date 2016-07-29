@@ -1,0 +1,22 @@
+// Place all the styles related to the histories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.canvas {
+  width: 800px;
+  height: 600px;
+  //border-radius: 25px;
+  //border: 2px solid #8aC007;
+  //padding: 20px; 
+}
+
+.mindmap {
+  .folder {
+    display: none;
+    .bookmark {
+      display: none;
+      p { display: none; }
+    }
+  }
+}
+
