@@ -14,8 +14,8 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: root # docker-compose.ymlのMYSQL_ROOT_PASSWORD
+  host: db       # docker-compose.ymlのサービス名
 
 development:
   <<: *default
