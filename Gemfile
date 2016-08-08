@@ -6,6 +6,7 @@ gem 'bootswatch-rails'
 gem "slim-rails"
 gem "markio"
 gem "refile", require: "refile/rails"
+gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'

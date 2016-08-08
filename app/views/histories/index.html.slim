@@ -17,5 +17,7 @@ table
         td = link_to 'Destroy', history, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
+= paginate @histories
+br
 
 = link_to 'New History', new_history_path
