@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160728065630) do
   create_table "folders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.integer  "parent_id"
-    t.string   "folders"
+    t.string   "path"
     t.integer  "layer"
     t.integer  "history_id"
     t.datetime "created_at", null: false
