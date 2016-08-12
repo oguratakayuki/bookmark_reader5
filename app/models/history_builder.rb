@@ -7,7 +7,6 @@ module HistoryBuilder
       @errors = []
       History.transaction do
         @history.save
-        debugger
         #html = Markio::parse(File.open @history.file.to_io)
         #html = Markio::parse(File.open @history.file.read)
         html = Markio::parse(@history.file.read)
@@ -17,10 +16,18 @@ module HistoryBuilder
         html.each do |b|
           folders = b.folders.reject{|e | e == 'ブックマーク バー'}.uniq
           #formated_folder = folders.size == 1 ? folders : folders.join("/")
-          folder_attributes = {folders: folders.join("/"), layer: folders.count, history: history }
-          target_folders << folder = Folder.create(folder_attributes)
-          bookmark_attributes = { title: b.title, href: b.href, folder_id: folder.id, layer: folders.count + 1 }
+          #folder_attributes = {folders: folders.join("/"), layer: folders.count, history: history }
+          #target_folders << folder = Folder.create(folder_attributes)
+
+
+          folder = Folder.create(fullpath: folders.join('/'), history: history)
+          bookmark_attributes = { title: b.title, href: b.href, folder_id: folder.id, layer: folder.layer.nil? ? 0 : folder.layer + 1 }
+
           Bookmark.create(bookmark_attributes.merge(add_date: b.add_date, history: history))
+        end
+
+        Folder.all.order(layer: :desc).in_batches(of: 100) do |folders|
+          folders.each{|folder| folder.update_parents }
         end
         #begin
         #  target_folders = target_folders.sort_by{|t| t.folders.count}

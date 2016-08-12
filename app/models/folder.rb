@@ -5,8 +5,8 @@ class Folder < ActiveRecord::Base
   scope :by_layer, ->(id) { where(layer: id) }
   scope :by_path, ->(path) { where(path: path) }
   scope :by_title, ->(title) { where(title: title) }
-  before_validation :initialize_by_title_with_path, if:  ->(t) { t.title_with_path.present? }
-  attr_accessor :title_with_path
+  before_validation :initialize_by_fullpath, if:  ->(t) { t.fullpath.present? }
+  attr_accessor :fullpath
 
   def to_s
     path.join('/')
@@ -21,24 +21,13 @@ class Folder < ActiveRecord::Base
     end
   end
   def is_root?
-    self.path.split('/').count == 0
+    self.path.nil? || self.path.split('/').count == 0
   end
   def has_parent?
     parent_id
   end
-  def initialize_by_title_with_path
-    #from_root_folder = []
-    #title_with_path.split('/').each do |folder|
-    #  Folder.find_or_create_by(path: from_root_folder.join('/'), title: folder, history_id: history_id)
-    #  from_root_folder << folder
-    #end
-    title_with_path = self.title_with_path.split('/')
-    #self.title = title_with_path.pop
-    #self.layer =title_with_path.size + 1
-    #self.path = title_with_path.join('/')
-    self.title, self.layer, self.path = Folder.divide_fullpath(title_with_path).values
-
-    #self.parent_id = Folder.by_path(self.path).first.try(:id)
+  def initialize_by_fullpath
+    self.title, self.layer, self.path = Folder.divide_fullpath(self.fullpath.dup).values
   end
   def child_ids
     Folder.where(parent_id: id).pluck(:id)
