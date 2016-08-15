@@ -4,7 +4,7 @@ table
   thead
     tr
       th History
-      th Layler
+      th Layer
       th Path
       th Title
       th
@@ -15,9 +15,15 @@ table
     - @folders.each do |folder|
       tr
         td = folder.history_id
-        td = folder.layler
-        td = folder.path
-        td = folder.title
+        td = folder.layer
+        td = folder.title_with_path
+        td 
+          - folder.bookmarks.each do |bookmark|
+            p
+              = bookmark.title
+          - Folder.where(parent_id: folder.id).each do |folder|
+            p = folder.title_with_path
+
         td = link_to 'Show', folder
         td = link_to 'Edit', edit_folder_path(folder)
         td = link_to 'Destroy', folder, data: { confirm: 'Are you sure?' }, method: :delete

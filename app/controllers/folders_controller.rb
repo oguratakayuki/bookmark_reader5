@@ -4,7 +4,7 @@ class FoldersController < ApplicationController
   # GET /folders
   # GET /folders.json
   def index
-    @folders = Folder.order(:id).page(params[:page])
+    @folders = Folder.by_layer(1).order(:id).page(params[:page])
   end
 
   # GET /folders/1

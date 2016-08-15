@@ -20,7 +20,11 @@ module HistoryBuilder
           #target_folders << folder = Folder.create(folder_attributes)
 
 
-          folder = Folder.create(fullpath: folders.join('/'), history: history)
+          begin
+            folder = Folder.create(fullpath: folders.join('/'), history: history)
+          rescue => e
+            debugger
+          end
           bookmark_attributes = { title: b.title, href: b.href, folder_id: folder.id, layer: folder.layer.nil? ? 0 : folder.layer + 1 }
 
           Bookmark.create(bookmark_attributes.merge(add_date: b.add_date, history: history))

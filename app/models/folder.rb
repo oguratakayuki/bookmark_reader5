@@ -6,10 +6,16 @@ class Folder < ActiveRecord::Base
   scope :by_path, ->(path) { where(path: path) }
   scope :by_title, ->(title) { where(title: title) }
   before_validation :initialize_by_fullpath, if:  ->(t) { t.fullpath.present? }
+
+  validates_uniqueness_of :title,  scope: :path
+  validates_presence_of :title
   attr_accessor :fullpath
 
   def to_s
     path.join('/')
+  end
+  def title_with_path
+    path.to_s + '/' + title.to_s
   end
   def parent_folders
     if is_root?
