@@ -3,7 +3,6 @@ h1 Listing folders
 table
   thead
     tr
-      th History
       th Layer
       th Path
       th Title
@@ -14,20 +13,21 @@ table
   tbody
     - @folders.each do |folder|
       tr
-        td = folder.history_id
         td = folder.layer
         td = folder.title_with_path
-        td 
+        td[data= {child_ids: folder.child_ids}]
+        /td 
           - folder.bookmarks.each do |bookmark|
             p
               = bookmark.title
           - Folder.where(parent_id: folder.id).each do |folder|
             p = folder.title_with_path
+            p = folder.child_ids
 
-        td = link_to 'Show', folder
-        td = link_to 'Edit', edit_folder_path(folder)
-        td = link_to 'Destroy', folder, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Show', history_folder_path(@history, folder)
+        td = link_to 'Edit', edit_history_folder_path(@history, folder)
+        td = link_to 'Destroy', history_folder_path(@history, folder), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Folder', new_folder_path
+= link_to 'New Folder', new_history_folder_path(@history)

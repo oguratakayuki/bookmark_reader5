@@ -3,7 +3,8 @@ h1 Listing histories
 table
   thead
     tr
-      th File
+      th id
+      th 作成日
       th
       th
       th
@@ -11,7 +12,8 @@ table
   tbody
     - @histories.each do |history|
       tr
-        td = history.file
+        td = link_to history.id,history_folders_path(history)
+        td = history.created_at
         td = link_to 'Show', history
         td = link_to 'Edit', edit_history_path(history)
         td = link_to 'Destroy', history, data: {:confirm => 'Are you sure?'}, :method => :delete
