@@ -16,7 +16,7 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'materialize-sass'
+gem 'material_design_lite-rails', '~> 1.2'
 
 gem 'simple_form'
 

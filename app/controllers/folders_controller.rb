@@ -8,6 +8,12 @@ class FoldersController < ApplicationController
     @folders = @history.folders.by_layer(1).order(:id).page(params[:page])
   end
 
+  def child_folders
+    if child_ids = Folder.find(params[:id]).try(:child_ids)
+      Folder.where(id: child_ids)
+    end
+  end
+
   # GET /folders/1
   # GET /folders/1.json
   def show
