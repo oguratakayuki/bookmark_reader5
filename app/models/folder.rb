@@ -60,10 +60,11 @@ class Folder < ActiveRecord::Base
 
   def self.find_or_create_by_fullpath(from_root_folder, option)
     puts from_root_folder
-    unless Folder.find_by_fullpath(from_root_folder.dup)
+    unless folder = Folder.find_by_fullpath(from_root_folder.dup)
       hash = Folder.divide_fullpath(from_root_folder.dup)
-      Folder.create(hash.merge(option))
+      folder = Folder.create(hash.merge(option))
     end
+    folder
   end
   def self.find_by_fullpath(from_root_path)
     title, layer, path = Folder.divide_fullpath(from_root_path).values

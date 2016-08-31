@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :histories do
     resources :folders do
       get 'child_folders', on: :member
+      resources :bookmarks
     end
   end
 end

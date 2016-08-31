@@ -21,7 +21,7 @@ module HistoryBuilder
 
 
           begin
-            folder = Folder.create(fullpath: folders.join('/'), history: history)
+            folder = Folder.find_or_create_by_fullpath(folders.join('/'), history_id: history.id)
           rescue => e
             debugger
           end

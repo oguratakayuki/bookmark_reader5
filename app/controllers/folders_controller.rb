@@ -28,6 +28,7 @@ class FoldersController < ApplicationController
 
   # GET /folders/1/edit
   def edit
+    @history = History.find(params[:history_id])
   end
 
   # POST /folders
