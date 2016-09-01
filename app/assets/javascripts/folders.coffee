@@ -8,7 +8,7 @@ jQuery ($) ->
 
   $('li.folders span').click (e) ->
     console.log('hgeo')
-    $(@).parent().siblings().fadeToggle(400, "linear")
+    $(@).parents('div').siblings().fadeToggle(400, "linear")
  
 
     #console.log($(element).data('child-ids'))

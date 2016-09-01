@@ -7,11 +7,17 @@ ul.mdl-list
             | folder
           = folder.title_with_path
       div
-        ul.mdl-list
-          - folder.bookmarks.each do |bookmark|
-            li
-              span.mdl-list__item-primary-content
-                i.material-icons.mdl-list__item-icon
-                  | bookmark
-                = bookmark.title
-
+        - folder.bookmarks.each do |bookmark|
+          span.mdl-chip
+            span.mdl-chip__text
+              = bookmark.title.truncate(10)
+      br
+      div
+        ul
+          - folder.childs.each do |folder|
+            li.folders.mdl-list__item[data= {id: folder.id,  path: child_folders_history_folder_path(@history, folder)}]
+              div
+                span.mdl-list__item-primary-content
+                  i.material-icons.mdl-list__item-icon
+                    | folder
+                  = folder.title_with_path

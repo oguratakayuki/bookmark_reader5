@@ -36,8 +36,13 @@ class Folder < ActiveRecord::Base
     self.title, self.layer, self.path = Folder.divide_fullpath(self.fullpath.dup).values
   end
   def child_ids
-    Folder.where(parent_id: id).pluck(:id)
+    childs.pluck(:id)
   end
+  def childs
+    Folder.where(parent_id: id)
+  end
+
+
 
   def update_parents 
     unless is_root?
