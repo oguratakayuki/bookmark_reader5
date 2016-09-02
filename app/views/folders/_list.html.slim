@@ -2,22 +2,15 @@ ul.mdl-list
   - @folders.each do |folder|
     li.folders.mdl-list__item[data= {child_ids: folder.child_ids, id: folder.id,  path: child_folders_history_folder_path(@history, folder)}]
       div 
-        span.mdl-list__item-primary-content
-          i.material-icons.mdl-list__item-icon
-            | folder
-          = folder.title_with_path
-      div
+        =link_to child_folders_history_folder_path(@history, folder) do
+          span.mdl-list__item-primary-content
+            i.material-icons.mdl-list__item-icon
+              | folder
+            = folder.title
+      .bookmarks
         - folder.bookmarks.each do |bookmark|
-          span.mdl-chip
+          span.mdl-chip.bookmark
             span.mdl-chip__text
               = bookmark.title.truncate(10)
       br
-      div
-        ul
-          - folder.childs.each do |folder|
-            li.folders.mdl-list__item[data= {id: folder.id,  path: child_folders_history_folder_path(@history, folder)}]
-              div
-                span.mdl-list__item-primary-content
-                  i.material-icons.mdl-list__item-icon
-                    | folder
-                  = folder.title_with_path
+
