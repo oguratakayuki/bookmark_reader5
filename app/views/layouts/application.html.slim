@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
     title
       | BookmarkReader5
     = csrf_meta_tags
@@ -8,5 +9,41 @@ html
     = stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .container
-      = yield
+    .demo-layout-waterfall.mdl-layout.mdl-js-layout
+      header.mdl-layout__header.mdl-layout__header--waterfall
+        .mdl-layout__header-row
+          span.mdl-layout-title
+            | Title
+          .mdl-layout-spacer
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--expandable.mdl-textfield--floating-label.mdl-textfield--align-right
+            label.mdl-button.mdl-js-button.mdl-button--icon[for="waterfall-exp"]
+              i.material-icons
+                | search
+            .mdl-textfield__expandable-holder
+              input#waterfall-exp.mdl-textfield__input[type="text" name="sample"]
+        .mdl-layout__header-row
+          .mdl-layout-spacer
+          nav.mdl-navigation
+            a.mdl-navigation__link[href=""]
+              | Link
+            a.mdl-navigation__link[href=""]
+              | Link
+            a.mdl-navigation__link[href=""]
+              | Link
+            a.mdl-navigation__link[href=""]
+              | Link
+      .mdl-layout__drawer
+        span.mdl-layout-title
+          | Title
+        nav.mdl-navigation
+          a.mdl-navigation__link[href=""]
+            | Link
+          a.mdl-navigation__link[href=""]
+            | Link
+          a.mdl-navigation__link[href=""]
+            | Link
+          a.mdl-navigation__link[href=""]
+            | Link
+      main.mdl-layout__content
+        .page-content
+          = yield

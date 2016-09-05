@@ -10,10 +10,8 @@ class FoldersController < ApplicationController
 
   def child_folders
     @history = History.find(params[:history_id])
+    @folder = @history.folders.where(id: params[:id]).first
     @folders = @history.folders.where(parent_id: params[:id])
-    #if child_ids = Folder.find(params[:id]).try(:child_ids)
-    #  render json: Folder.where(id: child_ids).map(&:id)
-    #end
   end
 
   # GET /folders/1

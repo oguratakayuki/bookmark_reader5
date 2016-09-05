@@ -1,8 +1,9 @@
-.md
-  .breadcrumb.flat
-    a(href="#") JavaScript
-    a(href="#") AngularJS
-    a(href="#") CoffeeScript
-    a(href="#") TypeScript
-    a.active(href="#") Angular 2
+- tmp_folder = @folder.dup
+- while tmp_folder = tmp_folder.parent_folder do
+  div
+    = link_to tmp_folder.title, child_folders_history_folder_path(@history, tmp_folder)
+div
+  = @folder.title
+
+
 = render 'list'

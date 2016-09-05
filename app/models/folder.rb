@@ -26,6 +26,14 @@ class Folder < ActiveRecord::Base
       folders
     end
   end
+
+  def parent_folder
+    unless is_root?
+      Folder.find(parent_id)
+    end
+  end
+
+
   def is_root?
     self.path.nil? || self.path.split('/').count == 0
   end
