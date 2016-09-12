@@ -1,9 +1,26 @@
-- tmp_folder = @folder.dup
-- while tmp_folder = tmp_folder.parent_folder do
-  div
-    = link_to tmp_folder.title, child_folders_history_folder_path(@history, tmp_folder)
-div
-  = @folder.title
+.title
+  | Folder一覧
+.breadcrumbs
+  .inner
+    ul.cf
+      - folders_breadcrumbs_list(@history, @folder) do |ret|
+        li
+          = link_to ret[:path] do
+            = ret[:title]
+
+
+    /ul.cf
+      li
+        = link_to root_path do
+         | Home 
+      - tmp_folder = @folder.dup
+      - while tmp_folder = tmp_folder.parent_folder do
+        li
+          = link_to child_folders_history_folder_path(@history, tmp_folder) do
+            = tmp_folder.title
+      li
+        a.span.active
+          = @folder.title
 
 
 = render 'list'
