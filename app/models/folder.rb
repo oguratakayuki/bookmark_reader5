@@ -88,7 +88,7 @@ class Folder < ActiveRecord::Base
   def self.divide_fullpath(from_root_path)
     ret_hash = {}
     if from_root_path.is_a?(String)
-      from_root_path = from_root_path.split('/')
+      from_root_path = from_root_path.split('/').reject(&:blank?)
     end
     ret_hash[:title] = from_root_path.pop
     ret_hash[:layer] = from_root_path.size + 1

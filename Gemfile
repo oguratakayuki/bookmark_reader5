@@ -56,5 +56,15 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  #https://github.com/rspec/rspec-rails/issues/1546
+  #gem "rspec-core", :github => "rspec/rspec-core"
+  #gem "rspec-expectations", :github => "rspec/rspec-expectations"
+  #gem "rspec-mocks", :github => "rspec/rspec-mocks"
+  #gem "rspec-support", :github => "rspec/rspec-support"
+  #gem "rspec-rails", :github => "rspec/rspec-rails"
+  gem "rspec"
+  gem "rspec-rails"
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
