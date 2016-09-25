@@ -1,17 +1,18 @@
-ul.mdl-list
-  - @folders.each do |folder|
-    li.folders.mdl-list__item[data= {child_ids: folder.child_ids, id: folder.id,  path: child_folders_history_folder_path(@history, folder)}]
-      div 
-        =link_to child_folders_history_folder_path(@history, folder) do
-          span.mdl-list__item-primary-content
-            i.material-icons.mdl-list__item-icon
-              | folder
-            = folder.title
-      = render 'bookmarks', bookmarks: folder.bookmarks
-      /.bookmarks
-        - folder.bookmarks.each do |bookmark|
-          span.mdl-chip.bookmark
-            span.mdl-chip__text
-              = bookmark.title.truncate(10)
-      br
+
+br
+br
+.horizontal-scroll-bar-container
+  .horizontal-scroll-bar-modules
+    - @folders.each do |folder|
+      =link_to child_folders_history_folder_path(@history, folder) do
+        .horizontal-scroll-bar-module
+          = folder.title
+
+- if @folder
+  .bookmarks
+    - @folder.bookmarks.each do |bookmark|
+      = render 'bookmarks', bookmark: bookmark
+      /span.mdl-chip.bookmark
+        span.mdl-chip__text
+          = bookmark.title.truncate(10)
 

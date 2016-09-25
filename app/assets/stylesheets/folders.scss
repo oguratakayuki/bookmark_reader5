@@ -13,4 +13,33 @@
   margin: 5px;
 }
 
+// http://jsfiddle.net/s6wcudua/
+// horizontal scroll 
 
+.horizontal-scroll-bar-container {
+//    width:300px;
+    height: 60px;
+    overflow: hidden;
+}
+.horizontal-scroll-bar-modules {
+    height:90px; /* 40px - more place for scrollbar, is hidden under parent box */
+    padding:5px;
+    white-space:nowrap;
+    overflow-x: scroll;
+    overflow-y: hide;
+	-webkit-overflow-scrolling:touch;
+}
+.horizontal-scroll-bar-module {
+    display:inline-block;
+    //width:50px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    background:#ddd;
+    padding: 10px;
+    margin-left: 10px;
+}
+.horizontal-scroll-bar-module + .horizontal-scroll-bar-module {
+    //margin-left: 10px;
+    //padding: 10px;
+}
