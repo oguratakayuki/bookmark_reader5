@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #results {
   margin-top: 100px;
+  text-align:center;
 }
 .clearfix:after {
   content:" ";
@@ -15,6 +16,11 @@
 .bookmark {
   margin: 5px;
 }
+
+.outer {
+  padding: 10px;
+}
+
 
 // http://jsfiddle.net/s6wcudua/
 // horizontal scroll 
