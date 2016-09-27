@@ -1,6 +1,9 @@
 // Place all the styles related to the Folders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#results {
+  margin-top: 100px;
+}
 .clearfix:after {
   content:" ";
   display:block;
@@ -27,7 +30,7 @@
     white-space:nowrap;
     overflow-x: scroll;
     overflow-y: hide;
-	-webkit-overflow-scrolling:touch;
+    -webkit-overflow-scrolling:touch;
 }
 .horizontal-scroll-bar-module {
     display:inline-block;

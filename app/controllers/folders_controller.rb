@@ -6,12 +6,14 @@ class FoldersController < ApplicationController
   def index
     @history = History.find(params[:history_id])
     @folders = @history.folders.by_layer(1).order(:id).page(params[:page])
+    @layer = 0
   end
 
   def child_folders
     @history = History.find(params[:history_id])
     @folder = @history.folders.where(id: params[:id]).first
     @folders = @history.folders.where(parent_id: params[:id])
+    @layer = @history.folders.where(id: params[:id]).first.layer
   end
 
   # GET /folders/1

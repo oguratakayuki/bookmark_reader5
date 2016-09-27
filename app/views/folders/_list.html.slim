@@ -1,18 +1,14 @@
-
-br
-br
-.horizontal-scroll-bar-container
-  .horizontal-scroll-bar-modules
-    - @folders.each do |folder|
-      =link_to child_folders_history_folder_path(@history, folder) do
-        .horizontal-scroll-bar-module
+.layer[data-layer="#{@layer}"]
+  .horizontal-scroll-bar-container
+    .horizontal-scroll-bar-modules[data-layer="#{@layer}"]
+      - @folders.each do |folder|
+        .horizontal-scroll-bar-module[data-href="#{child_folders_history_folder_path(@history, folder)}"] 
           = folder.title
-
-- if @folder
-  .bookmarks
-    - @folder.bookmarks.each do |bookmark|
-      = render 'bookmarks', bookmark: bookmark
-      /span.mdl-chip.bookmark
-        span.mdl-chip__text
-          = bookmark.title.truncate(10)
+  - if @folder
+    .bookmarks
+      - @folder.bookmarks.each do |bookmark|
+        = render 'bookmarks', bookmark: bookmark
+        /span.mdl-chip.bookmark
+          span.mdl-chip__text
+            = bookmark.title.truncate(10)
 
