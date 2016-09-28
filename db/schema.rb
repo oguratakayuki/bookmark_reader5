@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728065630) do
+ActiveRecord::Schema.define(version: 20160928080041) do
 
   create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.text     "href",       limit: 65535
+    t.text     "body",       limit: 65535
     t.date     "add_date"
     t.integer  "folder_id"
     t.integer  "layer"

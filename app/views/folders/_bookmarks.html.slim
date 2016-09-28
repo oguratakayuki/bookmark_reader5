@@ -1,12 +1,23 @@
-.demo-card-wide.mdl-card.mdl-shadow--2dp
-  .mdl-card__title.mdl-card--expand
-    h4
-      = bookmark.title
-  .mdl-card__supporting-text
-    |  詳細 aaa
-  .mdl-card__actions.mdl-card--border
-    a.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect
-      |  Add to Calendar 
-    .mdl-layout-spacer
+section.section--center.mdl-grid.mdl-grid--no-spacing.mdl-shadow--2dp
+  .mdl-card.mdl-cell.mdl-cell--12-col
+    .mdl-card__supporting-text
+      h4
+        | Technology
+      |  Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse. Pariatur occaecat nisi laboris tempor laboris eiusmod qui id Lorem esse commodo in. Exercitation aute dolore deserunt culpa consequat elit labore incididunt elit anim. 
+    .mdl-card__actions
+      a.mdl-button[href="#"]
+        | Read our features
+  button#btn3.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon[data-upgraded=",MaterialButton,MaterialRipple"]
     i.material-icons
-      | event
+      | more_vert
+    span.mdl-button__ripple-container
+      span.mdl-ripple
+  .mdl-menu__container.is-upgraded
+    .mdl-menu__outline.mdl-menu--bottom-right
+    ul.mdl-menu.mdl-js-menu.mdl-menu--bottom-right[for="btn3" data-upgraded=",MaterialMenu"]
+      li.mdl-menu__item[tabindex="-1"]
+        | Lorem
+      li.mdl-menu__item[disabled="" tabindex="-1"]
+        | Ipsum
+      li.mdl-menu__item[tabindex="-1"]
+        | Dolor
