@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :histories do
     resources :folders do
       get 'child_folders', on: :member
-      resources :bookmarks
+      resources :bookmarks do
+        put 'sync_body', on: :member
+      end
     end
   end
 end

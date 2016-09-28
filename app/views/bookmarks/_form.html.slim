@@ -1,0 +1,10 @@
+= simple_form_for(@bookmark) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :href
+    = f.input :body
+
+  .form-actions
+    = f.button :submit
