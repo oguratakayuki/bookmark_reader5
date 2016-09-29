@@ -4,6 +4,8 @@ class Bookmark < ActiveRecord::Base
   belongs_to :history, inverse_of: :bookmarks
   scope :layer_by, ->(id) { where(layer: id) }
 
+  after_create :sync_body
+
   def folders=(value)
     super(value.to_json)
   end
@@ -21,4 +23,8 @@ class Bookmark < ActiveRecord::Base
   def full_path
     folder.folders.join('/') + '/' + title
   end
+  private
+    def sync_body
+    end
+  #private end
 end
