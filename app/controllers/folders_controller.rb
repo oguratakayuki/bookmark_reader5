@@ -4,6 +4,7 @@ class FoldersController < ApplicationController
   # GET /folders
   # GET /folders.json
   def index
+    CrawlerWorker.perform_async('aaa')
     @history = History.find(params[:history_id])
     @folders = @history.folders.by_layer(1).order(:id).page(params[:page])
     @layer = 0

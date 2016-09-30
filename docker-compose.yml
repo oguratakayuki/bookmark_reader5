@@ -4,12 +4,18 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: root
+  redis:
+    image: redis:3.0.5
   web:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/myapp
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     ports:
       - "3000:3000"
     depends_on:
       - db
+      - redis

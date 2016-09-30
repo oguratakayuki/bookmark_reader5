@@ -25,6 +25,11 @@ class Bookmark < ActiveRecord::Base
   end
   private
     def sync_body
+      #urlと自身のIDを渡す
+      #内部でdomainにより実行するクラスを切り替える
+      #SiteWorkder.sync(id, url)
+      #CrawlerWorker.perform_async id, url
+      CrawlerWorker.perform_async id
     end
   #private end
 end

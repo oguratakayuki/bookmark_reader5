@@ -20,6 +20,8 @@ gem 'material_design_lite-rails', '~> 1.2'
 
 gem 'simple_form'
 gem 'draper', '>= 3.0.0.pre1'
+gem 'sidekiq'
+gem 'redis-namespace'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
