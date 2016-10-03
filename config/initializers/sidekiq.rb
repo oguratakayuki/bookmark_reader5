@@ -17,4 +17,5 @@ end
 ## jobをキューから取得するのに必要
 Sidekiq.configure_server do |config|
   config.redis = { url: "redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}" }
+  config.average_scheduled_poll_interval = 2
 end

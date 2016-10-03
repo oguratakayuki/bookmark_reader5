@@ -7,3 +7,7 @@
 #  - event
 :pidfile: ./tmp/pids/sidekiq.pid
 :logfile: ./log/sidekiq.log
+:concurrency: 3 #並列数
+:retry: 1
+:queues:
+  - [hogehoge,1]
