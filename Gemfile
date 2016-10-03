@@ -22,6 +22,8 @@ gem 'simple_form'
 gem 'draper', '>= 3.0.0.pre1'
 gem 'sidekiq'
 gem 'redis-namespace'
+gem 'mechanize'
+gem 'sanitize'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

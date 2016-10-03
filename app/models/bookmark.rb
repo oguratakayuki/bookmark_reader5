@@ -29,7 +29,7 @@ class Bookmark < ActiveRecord::Base
       #内部でdomainにより実行するクラスを切り替える
       #SiteWorkder.sync(id, url)
       #CrawlerWorker.perform_async id, url
-      CrawlerWorker.perform_async id
+      CrawlerWorker.perform_async id, href
     end
   #private end
 end
