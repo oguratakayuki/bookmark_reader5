@@ -24,6 +24,10 @@ gem 'sidekiq'
 gem 'redis-namespace'
 gem 'mechanize'
 gem 'sanitize'
+#for crawling
+gem 'nokogiri'
+gem 'poltergeist'
+gem 'capybara'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
