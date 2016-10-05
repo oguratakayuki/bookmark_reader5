@@ -18,7 +18,7 @@ module Investigator
       def self.extract_evernote_original_source_url url
         agent = Mechanize.new
         agent.get(url)
-        agent.page.search('a#note-source-url').try(:[], 'href') || url
+        agent.page.search('a#note-source-url').first.try(:[], 'href') || url
       end
     #private end
 

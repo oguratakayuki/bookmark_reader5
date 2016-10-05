@@ -6,7 +6,7 @@ class Crawler
   def initialize *args
     @investigated = false
     super *args
-    @investigator = Crawler::InvestigatorDispatcher.by_url(@target_url)
+    @investigator = InvestigatorDispatcher.by_url(@target_url)
   end
 
 end
