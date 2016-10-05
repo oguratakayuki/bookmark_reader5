@@ -14,6 +14,7 @@ class FoldersController < ApplicationController
     @folder = @history.folders.where(id: params[:id]).first
     @folders = @history.folders.where(parent_id: params[:id])
     @layer = @history.folders.where(id: params[:id]).first.layer
+    render layout: nil
   end
 
   # GET /folders/1

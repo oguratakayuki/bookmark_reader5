@@ -6,6 +6,7 @@ class Bookmark < ActiveRecord::Base
   scope :href_like, ->(href) { where(arel_table[:href].matches("%#{href}%")) }
 
   after_create :sync_body
+  #after_initialize :sync_body, if: -> { body.blank? }
 
   def folders=(value)
     super(value.to_json)
@@ -51,7 +52,7 @@ class Bookmark < ActiveRecord::Base
       #内部でdomainにより実行するクラスを切り替える
       #SiteWorkder.sync(id, url)
       #CrawlerWorker.perform_async id, url
-      CrawlerWorker.perform_async id, href
+      CrawlerWorker.perform_async id
     end
   #private end
 

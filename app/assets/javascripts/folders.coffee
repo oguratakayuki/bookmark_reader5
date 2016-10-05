@@ -10,7 +10,8 @@ jQuery ($) ->
     console.log('hgeo')
     $(@).parents('div').siblings().fadeToggle(400, "linear")
  
-  $('.horizontal-scroll-bar-module').click (e) ->
+  # $('.horizontal-scroll-bar-module').click (e) ->
+  $(document).on 'click', '.horizontal-scroll-bar-module', ->
     console.log('hgeo')
     url = $(@).data('href')
     target = $(@)
