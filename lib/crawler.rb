@@ -6,7 +6,8 @@ class Crawler
   def initialize *args
     @investigated = false
     super *args
-    @investigator = InvestigatorDispatcher.by_url(@target_url)
+    @investigator = Investigator::Dispatcher.by_url(@target_url)
+    #Bookmark.where(folder_id: 4).map(&:href).map{|t| Investigator::Dispatcher.by_url(t).body }
   end
 
 end

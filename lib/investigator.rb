@@ -6,7 +6,7 @@ module Investigator
       when  /evernote\.com/
         Investigator::EvernoteInvestigator.new(target_url: url)
       else
-        Investigator::SiteInvestigator.new(target_url: url)
+        Investigator::DefaultInvestigator.new(target_url: url)
       end
     end
 
@@ -19,23 +19,32 @@ module Investigator
         agent = Mechanize.new
         agent.get(url)
         agent.page.search('a#note-source-url').first.try(:[], 'href') || url
+      rescue Net::OpenTimeout => e
+        puts "TIMEOUT: url =#{url}"
       end
     #private end
 
   end
-  class SiteInvestigator
+  class DefaultInvestigator
     include ActiveModel::Model
     attr_accessor :search_word, :successful, :target_url
     def initialize *args
       @agent = Mechanize.new
+      @agent.redirect_ok = false
+      @agent.read_timeout=3;
+      @agent.open_timeout=3;
       @visited = false
       super *args
     end
 
     def body
       visit_only_one_time
-      @agent.get(@target_url)
-      @agent.page.search('body').text
+      #@agent.get(@target_url)
+      if @agent.page.present?
+        @agent.page.search('body').text
+      else
+        'no body'
+      end
     end
 
     def body_by_phantomjs
@@ -66,9 +75,16 @@ module Investigator
         @agent.get(@target_url)
         @visited = true
       end
+    rescue Net::OpenTimeout => e
+      puts "TIMEOUT: url =#{@target_url}"
+    rescue SocketError => e
+      puts "Socket Error: url =#{@target_url}"
     end
   end
-  class EvernoteInvestigator
+  class EvernoteInvestigator < DefaultInvestigator
+    include ActiveModel::Model
+    attr_accessor :search_word, :successful, :target_url
+
     def body; ''; end
   end
 end
