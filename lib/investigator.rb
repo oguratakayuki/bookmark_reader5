@@ -1,4 +1,5 @@
 module Investigator
+  include ActionView::Helpers::SanitizeHelper
   class Dispatcher
     def self.by_url url
       url = extract_evernote_original_source_url(url) if evernote_url?(url)
@@ -27,7 +28,7 @@ module Investigator
   end
   class DefaultInvestigator
     include ActiveModel::Model
-    attr_accessor :search_word, :successful, :target_url
+    attr_accessor :search_word, :successful, :target_url, :agent
     def initialize *args
       @agent = Mechanize.new
       @agent.redirect_ok = false
@@ -73,6 +74,9 @@ module Investigator
     def visit_only_one_time
       unless @visited
         @agent.get(@target_url)
+        @agent.page.css('script').remove
+        strip_tags agent.page.body
+        #ApplicationController.helpers.strip_tags
         @visited = true
       end
     rescue Net::OpenTimeout => e
