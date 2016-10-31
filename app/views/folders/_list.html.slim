@@ -8,7 +8,7 @@
     .bookmarks
       - @folder.bookmarks.each do |bookmark|
         .outer
-          = render 'bookmarks', bookmark: bookmark
+          = render 'bookmark', bookmark: bookmark
           /span.mdl-chip.bookmark
             span.mdl-chip__text
               = bookmark.title.truncate(10)
