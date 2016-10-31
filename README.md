@@ -2,16 +2,17 @@
 
 # TODO
 
-## log機能
-### 今日の新規追加、先週の追加、今月の追加
+1. log機能
 
-## tag付加機能
+* 今日の新規追加、先週の追加、今月の追加
 
-## preview機能
+2. tag付加機能
 
-## 本文検索
+3. preview機能
 
-## rss reader連動
+4. 本文検索
+
+5. rss reader連動
 
 ## memo
 
