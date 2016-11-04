@@ -1,9 +1,12 @@
 .layer[data-layer="#{@layer}"]
   .horizontal-scroll-bar-container
     .horizontal-scroll-bar-modules[data-layer="#{@layer}"]
-      - @folders.each do |folder|
-        .horizontal-scroll-bar-module[data-href="#{child_folders_history_folder_path(@history, folder)}"] 
-          = folder.title
+      - if @folders.present?
+        - @folders.each do |folder|
+          .horizontal-scroll-bar-module[data-href="#{childs_folder_path(folder)}"] 
+            = folder.title
+      - else
+        | no data
   - if @folder
     .bookmarks
       - @folder.bookmarks.each do |bookmark|

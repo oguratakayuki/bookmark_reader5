@@ -13,7 +13,7 @@ html
       header.mdl-layout__header.mdl-layout__header--waterfall
         .mdl-layout__header-row
           span.mdl-layout-title
-            | Title
+            | BookmarkReader
           .mdl-layout-spacer
           .mdl-textfield.mdl-js-textfield.mdl-textfield--expandable.mdl-textfield--floating-label.mdl-textfield--align-right
             label.mdl-button.mdl-js-button.mdl-button--icon[for="waterfall-exp"]
@@ -34,7 +34,7 @@ html
               | Link
       .mdl-layout__drawer
         span.mdl-layout-title
-          | Title
+          | BookmarkReader
         nav.mdl-navigation
           a.mdl-navigation__link[href=""]
             | Link
@@ -47,3 +47,20 @@ html
       main.mdl-layout__content
         .page-content
           = yield
+  #bulk_insert_bookmarks_modal.modal.fade[role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+   .modal-dialog[role="document"]
+     .modal-content
+       = form_tag bulk_insert_bookmarks_path, multipart: true do
+         .modal-header
+           button.close[type="button" data-dismiss="modal" aria-hidden="true" aria-labelledby="myModalLabel"]
+             | ×
+           h4.modal-title
+             | エクスポートしたファイルを選択してください
+         .modal-body
+           = file_field_tag 'bookmark_bulk_insert[file]'
+         .modal-footer
+           button.btn.btn-default[type="button" data-dismiss="modal"]
+             | Close
+           button.btn.btn-primary[type="button"]
+             = submit_tag '送信'
+

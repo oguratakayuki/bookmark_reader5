@@ -1,19 +1,27 @@
 class FoldersController < ApplicationController
   before_action :set_folder, only: [:show, :edit, :update, :destroy]
 
+
+  def root
+    @history = History.new
+    @folders = Folder.by_layer(1).order(:id).page(params[:page])
+    @layer = 0
+  end
+
+
+
   # GET /folders
   # GET /folders.json
   def index
-    @history = History.find(params[:history_id])
+    #@history = History.find(params[:history_id])
     @folders = @history.folders.by_layer(1).order(:id).page(params[:page])
     @layer = 0
   end
 
-  def child_folders
-    @history = History.find(params[:history_id])
-    @folder = @history.folders.where(id: params[:id]).first
-    @folders = @history.folders.where(parent_id: params[:id])
-    @layer = @history.folders.where(id: params[:id]).first.layer
+  def childs
+    @folder = Folder.find(params[:id])
+    @folders = Folder.where(parent_id: params[:id])
+    @layer = @folder.layer
     render layout: nil
   end
 

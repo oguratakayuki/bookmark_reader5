@@ -2,6 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ($) ->
+  $('#bookmark-import').click (e) ->
+    $('.modal').modal('show')
+
   $('li.folders').click (e) ->
     $.each $(@).data('child-ids'), (index, child_id) =>
       console.log(child_id)

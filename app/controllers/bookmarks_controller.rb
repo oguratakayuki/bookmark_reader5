@@ -7,6 +7,12 @@ class BookmarksController < ApplicationController
     @bookmarks = Bookmark.all
   end
 
+  def bulk_insert
+    debugger
+    BookmarkBuilder.import_from_csv(bookmark_bulk_insert_params[:file])
+    return head :ok
+  end
+ 
   # GET /bookmarks/1
   # GET /bookmarks/1.json
   def show
@@ -70,5 +76,8 @@ class BookmarksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params
       params.require(:bookmark).permit(:title, :href, :body)
+    end
+    def bookmark_bulk_insert_params
+      params.require(:bookmark_bulk_insert).permit(:file)
     end
 end
