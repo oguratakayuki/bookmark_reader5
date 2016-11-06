@@ -5,6 +5,23 @@ jQuery ($) ->
   $('#bookmark-import').click (e) ->
     $('.modal').modal('show')
 
+  $('.modal-dialog form input[type="submit"]').click (e) ->
+    console.log 'fuga'
+    $('.modal').modal('hide')
+
+  $("#bookmark-import-form").on("ajax:success", (e, data, status, xhr) ->
+    #$("#new_article").append xhr.responseText
+    console.log 'success!!!!'
+    console.log xhr.responseText
+    console.log data
+  ).on "ajax:error", (e, xhr, status, error) ->
+    console.log 'fail!!!!'
+    console.log e
+    console.log xhr.responseText
+    console.log data
+
+
+
   $('li.folders').click (e) ->
     $.each $(@).data('child-ids'), (index, child_id) =>
       console.log(child_id)
@@ -22,7 +39,6 @@ jQuery ($) ->
       $('#results').append(html)
       console.log target
       console.log target.closest('div.layer').data('layer')
-      console.log 'hoge'
       console.log target.closest('div.layer').children('div.bookmarks')
       target.closest('div.layer').children('div.bookmarks').toggle('slow')
     #console.log($(element).data('child-ids'))

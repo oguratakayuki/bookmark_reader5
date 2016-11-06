@@ -8,9 +8,9 @@ class BookmarksController < ApplicationController
   end
 
   def bulk_insert
-    debugger
-    BookmarkBuilder.import_from_csv(bookmark_bulk_insert_params[:file])
-    return head :ok
+    bookmark_builder_importer = BookmarkBuilder::XMLImporter.new(file: bookmark_bulk_insert_params[:file])
+    bookmark_builder_importer.import
+    render json: bookmark_builder_importer.result.to_json
   end
  
   # GET /bookmarks/1
