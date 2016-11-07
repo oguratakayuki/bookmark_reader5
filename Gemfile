@@ -28,6 +28,7 @@ gem 'sanitize'
 gem 'nokogiri'
 gem 'poltergeist'
 gem 'capybara'
+gem 'remotipart'
 
 
 # Use Uglifier as compressor for JavaScript assets
