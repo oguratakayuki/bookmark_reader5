@@ -17,8 +17,10 @@ jQuery ($) ->
   ).on "ajax:error", (e, xhr, status, error) ->
     console.log 'fail!!!!'
     console.log e
+    console.log xhr
+    console.log status
+    console.log error
     console.log xhr.responseText
-    console.log data
 
 
 

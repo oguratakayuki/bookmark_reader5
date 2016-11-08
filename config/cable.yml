@@ -1,5 +1,7 @@
 development:
-  adapter: async
+  #adapter: async
+  adapter: redis
+  url: <%= "redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}" %>
 
 test:
   adapter: async

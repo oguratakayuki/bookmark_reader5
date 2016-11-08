@@ -8,9 +8,9 @@ class BookmarksController < ApplicationController
   end
 
   def bulk_insert
-    bookmark_builder_importer = BookmarkBuilder::XMLImporter.new(file: bookmark_bulk_insert_params[:file])
-    bookmark_builder_importer.import
-    render json: bookmark_builder_importer.result.to_json
+    bookmark_xml_importer = BookmarkImporter::XMLImporter.new(file: bookmark_bulk_insert_params[:file])
+    bookmark_xml_importer.import_async
+    render json: {message: 'start import'}
   end
  
   # GET /bookmarks/1
