@@ -32,7 +32,7 @@ class BookmarkWorker
       end
       #stream_id = "user_info_channel_#{current_user_id}"
       stream_id = "bookmark_channel"
-      result = {new: new_bookmark_ids, updated: updated_bookmark_ids, failure: failure_objects }
+      result = {new: new_bookmark_ids.count, updated: updated_bookmark_ids.count, failure: failure_objects.counts }
       ActionCable.server.broadcast(stream_id, result: result)
     end
   end
