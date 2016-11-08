@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require material
 //= require jquery.remotipart
+//= require toastr
 //= require_tree .

@@ -8,6 +8,7 @@ App.bookmark = App.cable.subscriptions.create "BookmarkChannel",
     console.log('channel disconnected')
 
   received: (data) ->
+    # Called when there's incoming data on the websocket for this channel
     console.log('channel data receivied')
     console.log(data)
-    # Called when there's incoming data on the websocket for this channel
+    toastr.success('importが完了しました')

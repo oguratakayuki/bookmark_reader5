@@ -15,6 +15,7 @@ jQuery ($) ->
     console.log xhr.responseText
     console.log data
   ).on "ajax:error", (e, xhr, status, error) ->
+    toastr.success('importを開始しました')
     console.log 'fail!!!!'
     console.log e
     console.log xhr

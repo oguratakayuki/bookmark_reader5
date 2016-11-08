@@ -29,6 +29,7 @@ gem 'nokogiri'
 gem 'poltergeist'
 gem 'capybara'
 gem 'remotipart'
+gem 'toastr'
 
 
 # Use Uglifier as compressor for JavaScript assets
